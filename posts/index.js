@@ -7,7 +7,7 @@ const axios = require("axios");
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-
+const PORT = process.env.PORT || 4000;
 const posts = {};
 
 app.get("/posts", (req, res) => {
@@ -40,7 +40,7 @@ app.post("/events", (req, res) => {
   res.send({});
 });
 
-app.listen(4000, () => {
-  console.log("the posts service is running v0.0.3");
-  console.log("Listening on 4000");
+app.listen(PORT, () => {
+  console.log("the posts service is running v0.0.4");
+  console.log("Listening on", PORT);
 });
