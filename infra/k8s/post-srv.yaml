@@ -1,0 +1,9 @@
+apiVarsion : apps/v1
+kind: Service
+metadata:
+  name: posts-srv
+spec:
+  type: nodePort
+  selector:
+    app: posts
+  ports:
