@@ -1,9 +1,12 @@
-apiVarsion : apps/v1
+apiVersion : v1
 kind: Service
 metadata:
   name: posts-srv
 spec:
-  type: nodePort
+  type: NodePort
   selector:
     app: posts
   ports:
+    - protocol: TCP
+      port: 4000
+      targetPort: 4000
