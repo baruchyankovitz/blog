@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: query-srv
 spec:
-  type: NodePort
   selector:
     app: query
   ports:
