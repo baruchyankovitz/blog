@@ -3,10 +3,9 @@ kind: Service
 metadata:
   name: comments-srv
 spec:
-  type: NodePort
   selector:
     app: comments
   ports:
     - protocol: TCP
-      port: 4003
-      targetPort: 4003
+      port: 4001
+      targetPort: 4001
