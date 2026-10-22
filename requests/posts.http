@@ -1,0 +1,23 @@
+@host = http://localhost:31266
+
+### Create a post
+# @name createPost
+POST {{host}}/posts
+Content-Type: application/json
+
+{
+  "title": "First post2"
+}
+
+### שמירת ה-ID במשתנה
+@postId = {{createPost.response.body.id}}
+
+### Add a comment to that post
+POST {{host}}/posts/{{postId}}/comments
+Content-Type: application/json
+
+{
+  "content": "great post !"
+}
+
+GET {{host}}/posts
