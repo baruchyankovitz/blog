@@ -5,6 +5,7 @@ const axios = require("axios");
 
 
 const app = express();
+const { PORT, EVENT_BUS_URL } = process.env;
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -52,7 +53,7 @@ app.post("/events", (req, res) => {
 app.listen(4002, async () => {
   console.log("Listening on 4002");
   try {
-    const res = await axios.get("http://localhost:4005/events");
+    const res = await axios.get(`${EVENT_BUS_URL}`);
 
     for (let event of res.data) {
       console.log("Processing event:", event.type);
