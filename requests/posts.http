@@ -20,4 +20,14 @@ Content-Type: application/json
   "content": "great post !"
 }
 
+### Get all posts
 GET {{host}}/posts
+
+### Send an event to posts
+POST {{host}}/events
+Content-Type: application/json
+
+{
+  "type": "PostCreated",
+  "data": { "id": "p1", "title": "from http file" }
+}

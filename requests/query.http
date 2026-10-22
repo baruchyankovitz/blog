@@ -1,0 +1,32 @@
+# Run first: kubectl port-forward deploy/query-deployment 4002:4002
+@host = http://localhost:4002
+
+### PostCreated
+POST {{host}}/events
+Content-Type: application/json
+
+{
+  "type": "PostCreated",
+  "data": { "id": "p1", "title": "First post" }
+}
+
+### CommentCreated
+POST {{host}}/events
+Content-Type: application/json
+
+{
+  "type": "CommentCreated",
+  "data": { "id": "c1", "content": "great post !", "postId": "p1", "status": "pending" }
+}
+
+### CommentUpdated
+POST {{host}}/events
+Content-Type: application/json
+
+{
+  "type": "CommentUpdated",
+  "data": { "id": "c1", "content": "great post !", "postId": "p1", "status": "approved" }
+}
+
+### Get all posts with comments
+GET {{host}}/posts

@@ -1,0 +1,29 @@
+# Run first: kubectl port-forward deploy/comments-deployment 4001:4001
+@host = http://
+@postId = p1
+
+### Create a comment
+# @name createComment
+POST {{host}}/posts/{{postId}}/comments
+Content-Type: application/json
+
+{
+  "content": "great post !"
+}
+
+### Get comments of the post
+GET {{host}}/posts/{{postId}}/comments
+
+### Moderate the comment
+POST {{host}}/events
+Content-Type: application/json
+
+{
+  "type": "CommentModerated",
+  "data": {
+    "id": "{{createComment.response.body.$[0].id}}",
+    "postId": "{{postId}}",
+    "status": "approved",
+    "content": "great post !"
+  }
+}

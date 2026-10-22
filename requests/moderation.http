@@ -1,0 +1,20 @@
+# Run first: kubectl port-forward deploy/moderation-deployment 4003:4003
+@host = http://localhost:4003
+
+### Comment with "orange" -> rejected
+POST {{host}}/events
+Content-Type: application/json
+
+{
+  "type": "CommentCreated",
+  "data": { "id": "c1", "postId": "p1", "content": "I like orange", "status": "pending" }
+}
+
+### Regular comment -> approved
+POST {{host}}/events
+Content-Type: application/json
+
+{
+  "type": "CommentCreated",
+  "data": { "id": "c2", "postId": "p1", "content": "great post !", "status": "pending" }
+}

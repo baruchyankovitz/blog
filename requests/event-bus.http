@@ -1,0 +1,14 @@
+# Run first: kubectl port-forward deploy/event-bus-deployment 4005:4005
+@host = http://localhost:4005
+
+### Publish an event
+POST {{host}}/events
+Content-Type: application/json
+
+{
+  "type": "PostCreated",
+  "data": { "id": "p1", "title": "First post" }
+}
+
+### Get all stored events
+GET {{host}}/events
