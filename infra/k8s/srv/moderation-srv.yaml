@@ -1,7 +1,7 @@
 apiVersion : v1
 kind: Service
 metadata:
-  name: modertion-srv
+  name: moderation-srv
 spec:
   selector:
     app: moderation

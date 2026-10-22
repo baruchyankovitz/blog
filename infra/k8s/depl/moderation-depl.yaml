@@ -15,3 +15,11 @@ spec:
       containers:
         - name: moderation
           image: baruchyankvitz/moderation:latest
+      containers:
+        - name: moderation
+          image: baruchyankvitz/moderation:latest
+          env:
+            - name: PORT
+              value: "4003"
+            - name: EVENT_BUS_URL
+              value: "http://event-bus-srv:4005/events"

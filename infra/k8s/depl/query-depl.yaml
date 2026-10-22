@@ -15,3 +15,6 @@ spec:
       containers:
         - name: query
           image: baruchyankvitz/query:latest
+          env:
+            - name: EVENT_BUS_URL
+              value: "http://event-bus-srv:4005/events"
