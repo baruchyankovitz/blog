@@ -40,7 +40,11 @@ app.post("/events", (req, res) => {
   res.send({});
 });
 
-app.listen(PORT, () => {
-  console.log("the posts service is running v0.0.4");
-  console.log("Listening on", PORT);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log("the posts service is running v0.0.4");
+    console.log("Listening on", PORT);
+  });
+}
+
+module.exports = app;
