@@ -26,6 +26,10 @@ app.post('/events', async (req, res) => {
   res.send({});
 });
 
-app.listen(PORT, () => {
-  console.log(`Moderation on ${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Moderation on ${PORT}`);
+  });
+}
+
+module.exports = app;
