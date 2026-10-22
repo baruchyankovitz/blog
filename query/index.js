@@ -50,8 +50,7 @@ app.post("/events", (req, res) => {
   res.send({});
 });
 
-app.listen(4002, async () => {
-  console.log("Listening on 4002");
+const syncEvents = async () => {
   try {
     const res = await axios.get(`${EVENT_BUS_URL}`);
 
@@ -63,4 +62,13 @@ app.listen(4002, async () => {
   } catch (error) {
     console.log(error.message);
   }
-});
+};
+
+if (require.main === module) {
+  app.listen(4002, async () => {
+    console.log("Listening on 4002");
+    await syncEvents();
+  });
+}
+
+module.exports = { app, syncEvents };
