@@ -29,5 +29,5 @@ Content-Type: application/json
 
 {
   "type": "PostCreated",
-  "data": { "id": "p1", "title": "from http file" }
+  "data": { "id": "p13", "title": "from http file" }
 }

@@ -1,5 +1,7 @@
 # Run first: kubectl port-forward deploy/comments-deployment 4001:4001
-@host = http://
+@host = http://localhost:31266/
+
+
 @postId = p1
 
 ### Create a comment
