@@ -15,9 +15,6 @@ spec:
       containers:
         - name: moderation
           image: baruchyankvitz/moderation:latest
-      containers:
-        - name: moderation
-          image: baruchyankvitz/moderation:latest
           env:
             - name: PORT
               value: "4003"
