@@ -10,11 +10,7 @@ const events = [];
 app.post("/events", (req, res) => {
   const event = req.body;
 
-  events.push(event);
-    axios.post("http://moderation-srv:4003/events", event).catch((err) => {
-    console.log(err.message);
-  });
-
+  
   axios.post("http://posts-clusterip-srv:4000/events", event).catch((err) => {
     console.log(err.message);
   });
@@ -26,6 +22,11 @@ app.post("/events", (req, res) => {
   });
   res.send({ status: "OK" });
 });
+ events.push(event);
+    axios.post("http://moderation-srv:4003/events", event).catch((err) => {
+    console.log(err.message);
+  });
+
 
 app.get("/events", (req, res) => {
   res.send(events);

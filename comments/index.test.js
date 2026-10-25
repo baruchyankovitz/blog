@@ -29,7 +29,7 @@ test("POST a comment stores it as pending and emits CommentCreated", async () =>
   expect(res.body).toEqual([
     { id: expect.any(String), content: "nice", status: "pending" },
   ]);
-  expect(axios.post).toHaveBeenCalledWith("http://localhost:4005/events", {
+  expect(axios.post).toHaveBeenCalledWith("http://event-bus-srv:4005/events", {
     type: "CommentCreated",
     data: {
       id: res.body[0].id,
@@ -55,7 +55,7 @@ test("CommentModerated updates the status and emits CommentUpdated", async () =>
     });
 
   expect(res.status).toBe(200);
-  expect(axios.post).toHaveBeenCalledWith("http://localhost:4005/events", {
+  expect(axios.post).toHaveBeenCalledWith("http://event-bus-srv:4005/events", {
     type: "CommentUpdated",
     data: { id, status: "approved", postId: "p1", content: "nice" },
   });
