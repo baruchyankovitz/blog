@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog-client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blog-client
+  template:
+    metadata:
+      labels:
+        app: blog-client
+    spec:
+      containers:
+        - name: blog-client
+          image: baruchyankvitz/blog-client:latest
